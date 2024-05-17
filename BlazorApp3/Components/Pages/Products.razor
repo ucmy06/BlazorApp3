@@ -1,0 +1,60 @@
+﻿<h3>Products</h3>
+@page "/Products"
+@using BlazorApp3.models
+
+
+
+<PageTitle>List des produits</PageTitle>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Num</th>
+      <th scope="col">Nom</th>
+      <th scope="col">Prix en $</th>
+      <th scope="col">Quantité</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Malike</td>
+      <td>10000</td>
+      <td>10</td>
+    </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>julien</td>
+            <td>12000</td>
+            <td>13</td>
+        </tr>
+        @foreach (var Produit in Produits)
+        {
+            <tr>
+                <th scope="row">@Produit.Id</th>
+                <td>@Produit.Nom</td>
+                <td>@Produit.Prix</td>
+                <td>@Produit.Quantite</td>
+            </tr>
+
+        }
+
+  </tbody>
+</table>
+
+@code {
+
+    List<Produit> Produits = new List<Produit>()
+    {
+    };
+
+    protected override async Task OnInitializedAsync()
+    {
+        Produits.AddRange(new List<Produit>(){
+            new Produit (1,"orange",250,16),
+            new Produit (2,"joli ju ",50,180),
+            new Produit (3,"djama",200,40),});
+
+    }
+
+}
